@@ -1,0 +1,16 @@
+# Prod profile: MySQL, config externalized via env vars - never commit real secrets.
+# ddl-auto is "update" so the first start creates the schema; once the schema is stable
+# switch to "validate" (or adopt Flyway) so Hibernate never alters a live database.
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/maintenance?useSSL=false&serverTimezone=UTC}
+    username: ${DB_USERNAME:maintenance_user}
+    password: ${DB_PASSWORD:changeme}
+    hikari:
+      maximum-pool-size: 10
+  jpa:
+    hibernate:
+      ddl-auto: update
+logging:
+  level:
+    com.example.maintenance: INFO

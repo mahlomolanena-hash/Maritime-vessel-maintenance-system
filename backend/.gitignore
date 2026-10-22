@@ -1,0 +1,42 @@
+# Build output
+target/
+*.class
+
+# IDE - IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# IDE - NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+# IDE - VS Code / Eclipse
+.vscode/
+.settings/
+.classpath
+.project
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment / secrets — application.yml / application-dev.yml / application-prod.yml
+# only ever reference secrets via ${ENV_VAR:placeholder} — never a real value — so
+# they're safe to commit. application-local.yml is where real personal overrides go,
+# so that one stays ignored.
+.env
+application-local.yml
+application-local.properties
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar

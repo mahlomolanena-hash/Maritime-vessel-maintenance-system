@@ -1,0 +1,18 @@
+# MySQL for the "prod" Spring profile:
+#   docker compose up -d
+#   cd backend && SPRING_PROFILES_ACTIVE=prod DB_URL='jdbc:mysql://localhost:3306/maintenance?useSSL=false&serverTimezone=UTC' \
+#       DB_USERNAME=maintenance_user DB_PASSWORD=changeme JWT_SECRET=<base64 secret> mvn spring-boot:run
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: maintenance
+      MYSQL_USER: maintenance_user
+      MYSQL_PASSWORD: changeme
+      MYSQL_ROOT_PASSWORD: rootchangeme
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+volumes:
+  mysql-data:
